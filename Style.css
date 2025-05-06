@@ -1,0 +1,738 @@
+/* General Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+}
+
+/* General Theme */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    height: 100%; /* Full viewport height */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center the container vertically */
+    align-items: center; /* Center the container horizontally */
+    background-image: url(../pictures/istockphoto-1371841921-612x612.jpg);
+    color: #003366; /* Dark blue text */
+}
+
+.container {
+    text-align: center; /* Center the content inside the container */
+    padding: 10px;
+    background-color: rgba(233, 246, 247, 0.9); /* Light blue with 80% opacity */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 60%; /* Set the width to 80% of the page */
+    width: 100%;
+    height: 50vh; /* Set the height to 80% of the viewport height */
+    margin: 0 auto; /* Center horizontally */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+h1 {
+    color: #00509e; /* Medium blue for the header */
+    font-size: 2.5em; /* Larger font size */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Tagline Styling */
+.tagline {
+    font-size: 1.2em;
+    color: #00509e; /* Medium blue */
+    font-style: italic;
+    margin-bottom: 20px;
+    text-align: center;
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+/* Fact Container Styling */
+.fact-container {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: rgb(0, 45, 75); /* Light blue with 80% opacity */
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    max-width: 400px;
+    width: 100%;
+    text-align: center; /* Center the text inside the fact container */
+}
+
+.fact {
+    font-size: 1em;
+    color: #00a2ff; /* Medium blue text */
+    font-style: italic;
+    margin: 0; /* Remove default margin */
+}
+
+/* Button Container */
+.button-container {
+    display: flex;
+    gap: 20px; /* Space between buttons */
+    justify-content: center; /* Center the buttons horizontally */
+}
+
+/* From Uiverse.io by SupportHotline */
+.button {
+    background: var(--color-back, #1900ff); /* Default to medium blue */
+    border-radius: 0.5em;
+    box-shadow:
+        inset 0px -6px 18px -6px rgba(3, 15, 20, 0),
+        inset rgba(54, 69, 75, 1) -1px -1px 6px 0px,
+        inset 12px 0px 12px -6px rgba(3, 15, 20, 0),
+        inset -12px 0px 12px -6px rgba(3, 15, 20, 0),
+        rgba(54, 69, 75, 1) -1px -1px 6px 0px;
+    border: solid 2px #030f14;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 0.7em 1.7em;
+    outline: none;
+    transition: all 0.3s;
+    user-select: none;
+    color: #000000; /* White text */
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.button:hover {
+    box-shadow:
+        inset 0px -6px 18px -6px rgba(3, 15, 20, 1),
+        inset 0px 6px 18px -6px rgba(3, 15, 20, 1),
+        inset 12px 0px 12px -6px rgba(3, 15, 20, 0),
+        inset -12px 0px 12px -6px rgba(3, 15, 20, 0),
+        -1px -1px 6px 0px rgba(54, 69, 75, 1);
+}
+
+.button:active {
+    box-shadow:
+        inset 0px -12px 12px -6px rgba(3, 15, 20, 1),
+        inset 0px 12px 12px -6px rgba(3, 15, 20, 1),
+        inset 12px 0px 12px -6px rgba(3, 15, 20, 1),
+        inset -12px 0px 12px -6px rgba(3, 15, 20, 1),
+        -1px -1px 6px 0px rgba(54, 69, 75, 1);
+}
+
+.text {
+    color: #01e1ff; /* Light blue text */
+    font-weight: 700;
+    margin: auto;
+    transition: all 0.3s;
+    width: fit-content;
+}
+
+.button:hover .text {
+    transform: scale(0.9);
+}
+
+.button:active .text {
+    transform: scale(0.8);
+}
+
+/* General Form Styling */
+.form {
+    background: #fff;
+    padding: 70 px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto; /* Center horizontally */
+    text-align: center; /* Center labels and inputs */
+
+    /* Center vertically */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.form h2 {
+    margin-bottom: 15px;
+    color: #333;
+    text-align: center;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+    color: #555;
+    text-align: center; /* Center the label text */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 90%; /* Same width for all inputs */
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center; /* Center text inside the input fields */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+}
+
+.button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button:active {
+    background-color: #003f7f;
+}
+
+/* Back Button Styling */
+#backButton {
+    background-color: #6c757d;
+    margin-top: 10px;
+}
+
+#backButton:hover {
+    background-color: #5a6268;
+}
+
+#backButton:active {
+    background-color: #4e555b;
+}
+
+/* Main Page Styling */
+.main-page {
+    width: 80%; /* Occupy 80% of the page width */
+    height: 80vh; /* Occupy 80% of the viewport height */
+    margin: 20px auto; /* Center the container horizontally */
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+    box-sizing: border-box; /* Include padding in width and height */
+}
+
+.main-page h1 {
+    color: #00509e; /* Medium blue */
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Subtle shadow */
+}
+
+.main-page p {
+    font-size: 1.2em;
+    color: #333;
+    margin-bottom: 30px;
+}
+
+#logoutButton {
+    width: 100%;
+    padding: 10px;
+    background-color: #dc3545; /* Red for logout button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#logoutButton:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+#logoutButton:active {
+    background-color: #bd2130; /* Even darker red on click */
+}
+
+/* Menu Bar Styling */
+.menu-bar {
+    width: 100%; /* Full width */
+    background-color: #007BFF; /* Blue background */
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    position: fixed; /* Fix the menu bar at the top */
+    top: 0; /* Align it to the top */
+    left: 0;
+    z-index: 1000; /* Ensure it stays above other elements */
+    box-sizing: border-box; /* Include padding in width calculation */
+}
+
+.menu-bar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center; /* Center the menu items horizontally */
+    align-items: center; /* Center the menu items vertically */
+    gap: 40px; /* Add spacing between menu items */
+}
+
+.menu-bar li {
+    position: relative;
+    display: flex;
+    align-items: center; /* Center the text vertically */
+}
+
+.menu-bar a {
+    text-decoration: none;
+    color: #fff; /* White text */
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+    text-align: center; /* Center the text */
+    padding: 10px 15px; /* Add padding for better clickability */
+    border-radius: 5px; /* Rounded corners */
+}
+
+.menu-bar a:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    color: #FFD700; /* Gold text on hover */
+}
+
+/* Main Content Styling */
+.main-content {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.main-content h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Categories List Styling */
+.categories-list {
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap to the next row */
+    justify-content: center; /* Center the cards horizontally */
+    align-items: flex-start; /* Align items at the top */
+    gap: 20px; /* Add spacing between cards */
+    margin: 20px auto; /* Center the container and add spacing */
+    padding: 10px;
+    width: 100%; /* Full width of the container */
+    box-sizing: border-box; /* Include padding in the width */
+    overflow-y: auto; /* Add vertical scrolling if content overflows */
+}
+
+.categories-list li {
+    display: inline-block;
+    width: 100%;
+    max-width: 300px;
+}
+
+.categories-list .button {
+    text-decoration: none;
+    background-color: #007BFF;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+    width: 100%;
+    text-align: center;
+}
+
+.categories-list .button:hover {
+    background-color: #0056b3;
+}
+
+.categories-list .button:active {
+    background-color: #003f7f;
+}
+
+/* Category Card Styling */
+.categories-list .card {
+    position: relative;
+    width: 220px; /* Fixed width for cards */
+    height: 300px; /* Fixed height for cards */
+    background-color: whitesmoke;
+    border-radius: 10px;
+    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to the top */
+    text-align: center;
+    padding: 10px;
+    box-sizing: border-box; /* Include padding in the width and height */
+}
+
+.categories-list .card:hover {
+    transform: translateY(-10px); /* Slightly lift the card */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Add a stronger shadow */
+}
+
+.categories-list .card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 2px solid #007BFF; /* Add a blue border under the image */
+    border-radius: 10px 10px 0 0; /* Rounded corners for the top */
+}
+
+.categories-list .card .card__content {
+    padding: 10px;
+    color: #333;
+    flex-grow: 1; /* Allow the content to grow and fill available space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Space out the title and description */
+}
+
+.categories-list .card .card__title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #007BFF; /* Blue title */
+}
+
+.categories-list .card .card__description {
+    font-size: 14px;
+    color: #555;
+}
+
+/* Hover Effect for "Hover Me" Design */
+.categories-list .card::before {
+    content: "Start Now!"; /* Updated text */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    pointer-events: none;
+}
+
+.categories-list .card:hover::before {
+    opacity: 1; /* Show the "Start Now!" text on hover */
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+    .categories-list {
+        flex-direction: column; /* Stack cards vertically */
+        align-items: center;
+    }
+
+    .categories-list .card {
+        width: 90%; /* Make cards take up most of the screen width */
+    }
+}
+
+/* Profile Page Styling */
+.profile-content {
+    text-align: center;
+}
+
+.profile-card {
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    display: inline-block;
+    text-align: center;
+}
+
+.profile-picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #007BFF;
+    margin-bottom: 15px;
+}
+
+.profile-name {
+    font-size: 1.5em;
+    margin: 10px 0;
+    color: #333;
+}
+
+.profile-email {
+    font-size: 1em;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+#editProfileButton {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+#editProfileButton:hover {
+    background-color: #0056b3;
+}
+
+#editProfileButton:active {
+    background-color: #003f7f;
+}
+
+/* Quiz and Results Container Styling */
+.quiz-container, .results-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+}
+
+.quiz-container h1, .results-container h1 {
+    font-size: 2.5em;
+    color: #007BFF;
+    margin-bottom: 20px;
+}
+
+.quiz-container .question, .results-container p {
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.button {
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+.button:active {
+    background-color: #003f7f;
+}
+
+/* Quiz Container Styling */
+.quiz-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+    background-color: #f9f9f9; /* Light background for the quiz */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* Question Text Styling */
+.quiz-container h1 {
+    font-size: 2.5em;
+    color: #007BFF; /* Blue color for the quiz title */
+    margin-bottom: 20px;
+}
+
+.quiz-container .question {
+    font-size: 1.2em;
+    color: #333; /* Neutral color for the question text */
+    margin-bottom: 20px;
+    text-align: left; /* Align the question text to the left */
+}
+
+/* Choices Styling */
+.quiz-container .choices {
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    align-items: center; /* Center the buttons horizontally */
+    gap: 15px; /* Add spacing between buttons */
+    margin-bottom: 20px;
+}
+
+.quiz-container .choice-button {
+    background-color: #007BFF; /* Blue background */
+    color: #fff; /* White text */
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    width: 100%; /* Full width for better alignment */
+    max-width: 400px; /* Limit the width */
+    text-align: center; /* Center the text */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.quiz-container .choice-button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    transform: scale(1.05); /* Slightly enlarge the button */
+}
+
+.quiz-container .choice-button:active {
+    background-color: #003f7f; /* Even darker blue on click */
+    transform: scale(0.95); /* Slightly shrink the button */
+}
+
+/* Next Button Styling */
+.quiz-container .button {
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.quiz-container .button:hover {
+    background-color: #0056b3;
+}
+
+.quiz-container .button:active {
+    background-color: #003f7f;
+}
+
+/* Results Container Styling */
+.results-container {
+    text-align: center;
+    margin: 50px auto;
+    max-width: 600px;
+    background-color: #f9f9f9; /* Light background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.results-container h1 {
+    font-size: 2.5em;
+    color: #007BFF; /* Blue color for the title */
+    margin-bottom: 20px;
+}
+
+.results-container h2 {
+    font-size: 2em;
+    color: #28a745; /* Green color for the score */
+    margin-top: 20px;
+}
+
+.results-container p {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.results-container p.correct {
+    color: #28a745; /* Green for correct answers */
+}
+
+.results-container p.incorrect {
+    color: #dc3545; /* Red for incorrect answers */
+}
+
+/* Back to Home Button */
+.results-container .button {
+    margin-top: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    padding: 10px 20px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.results-container .button:hover {
+    background-color: #0056b3;
+}
+
+.results-container .button:active {
+    background-color: #003f7f;
+}
+
+/* About Page Styling */
+.about-page {
+    width: 80%;
+    margin: 100px auto; /* Center the container and leave space for the menu bar */
+    padding: 20px;
+    text-align: center; /* Center the text */
+    font-family: Arial, sans-serif;
+}
+
+.about-page h1 {
+    font-size: 2.5em;
+    color: #000000; /* Blue color for the title */
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+/* About Container Styling */
+.about-container {
+    background-color: #e6f7ff; /* Light blue background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    text-align: justify; /* Justify the text */
+    line-height: 1.6; /* Improve readability */
+    color: #333; /* Neutral text color */
+    font-size: 1.2em;
+}
+
+.about-page .about-description {
+    font-size: 1.2em;
+    color: #333; /* Neutral color for the text */
+    line-height: 1.6; /* Improve readability */
+    text-align: justify; /* Justify the text */
+    margin: 0 auto;
+    max-width: 800px; /* Limit the width of the text */
+}
+
+input[type="file"],
+input[type="text"],
+input[type="email"] {
+    display: block;
+    margin: 10px auto;
+    padding: 10px;
+    width: 90%;
+    max-width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
