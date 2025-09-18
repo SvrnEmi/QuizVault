@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <link rel="stylesheet" href="style.css"> <!-- Link to external CSS -->
+    <link rel="shortcut icon" href="Quizvault.png" type="image/x-icon">
+</head>
+<body>
+    <div class="results-container">
+        <h1 id="resultsTitle">Quiz Results</h1>
+        <div id="resultsDetails"></div>
+        <h2 id="finalScore"></h2>
+        <button class="button" onclick="window.location.href='homepage.html'">Back to Home</button>
+    </div>
+    <script>
+        // Retrieve the category and user answers
+        const urlParams = new URLSearchParams(window.location.search);
+        const category = urlParams.get('category');
+        const userAnswers = JSON.parse(localStorage.getItem("userAnswers")) || {};
+
+        // Questions for each category
+        const questions = {
+            science: [
+                { question: "What is the chemical symbol for water?", options: ["H2O", "O2", "CO2", "NaCl"], answer: "H2O" },
+                { question: "What planet is known as the Red Planet?", options: ["Mars", "Venus", "Jupiter", "Saturn"], answer: "Mars" },
+                { question: "What is the speed of light?", options: ["300,000 km/s", "150,000 km/s", "1,000 km/s", "500,000 km/s"], answer: "300,000 km/s" },
+                { question: "What gas do plants absorb from the atmosphere?", options: ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"], answer: "Carbon Dioxide" },
+                { question: "What is the powerhouse of the cell?", options: ["Nucleus", "Mitochondria", "Ribosome", "Golgi Apparatus"], answer: "Mitochondria" },
+                { question: "What is the boiling point of water?", options: ["100°C", "0°C", "50°C", "200°C"], answer: "100°C" },
+                { question: "What is the largest planet in our solar system?", options: ["Jupiter", "Saturn", "Earth", "Mars"], answer: "Jupiter" },
+                { question: "What is the chemical symbol for gold?", options: ["Au", "Ag", "Fe", "Hg"], answer: "Au" },
+                { question: "What is the main gas found in the Earth's atmosphere?", options: ["Nitrogen", "Oxygen", "Carbon Dioxide", "Hydrogen"], answer: "Nitrogen" },
+                { question: "What is the process by which plants make their food?", options: ["Photosynthesis", "Respiration", "Digestion", "Fermentation"], answer: "Photosynthesis" },
+                { question: "What is the smallest unit of life?", options: ["Cell", "Atom", "Molecule", "Organ"], answer: "Cell" },
+                { question: "What is the chemical formula for table salt?", options: ["NaCl", "KCl", "H2O", "CO2"], answer: "NaCl" },
+                { question: "What is the name of the galaxy we live in?", options: ["Milky Way", "Andromeda", "Whirlpool", "Sombrero"], answer: "Milky Way" },
+                { question: "What is the hardest natural substance on Earth?", options: ["Diamond", "Gold", "Iron", "Quartz"], answer: "Diamond" },
+                { question: "What is the main organ of the circulatory system?", options: ["Heart", "Lungs", "Brain", "Liver"], answer: "Heart" }
+            ],
+            history: [
+                { question: "Who was the first President of the United States?", options: ["George Washington", "Abraham Lincoln", "Thomas Jefferson", "John Adams"], answer: "George Washington" },
+                { question: "In what year did World War II end?", options: ["1945", "1939", "1918", "1963"], answer: "1945" },
+                { question: "Who discovered America?", options: ["Christopher Columbus", "Vasco da Gama", "Ferdinand Magellan", "James Cook"], answer: "Christopher Columbus" },
+                { question: "What was the name of the ship that carried the Pilgrims to America?", options: ["Mayflower", "Santa Maria", "Endeavour", "Victoria"], answer: "Mayflower" },
+                { question: "Who was known as the Iron Lady?", options: ["Margaret Thatcher", "Indira Gandhi", "Angela Merkel", "Golda Meir"], answer: "Margaret Thatcher" },
+                { question: "What year did the Berlin Wall fall?", options: ["1989", "1990", "1985", "1991"], answer: "1989" },
+                { question: "Who was the first man to step on the moon?", options: ["Neil Armstrong", "Buzz Aldrin", "Yuri Gagarin", "Michael Collins"], answer: "Neil Armstrong" },
+                { question: "What empire was ruled by Julius Caesar?", options: ["Roman Empire", "Ottoman Empire", "Mongol Empire", "British Empire"], answer: "Roman Empire" },
+                { question: "What was the name of the last queen of France?", options: ["Marie Antoinette", "Catherine de Medici", "Anne of Austria", "Joan of Arc"], answer: "Marie Antoinette" },
+                { question: "Who was the first female Prime Minister of the UK?", options: ["Margaret Thatcher", "Theresa May", "Angela Merkel", "Indira Gandhi"], answer: "Margaret Thatcher" },
+                { question: "What year did the Titanic sink?", options: ["1912", "1905", "1920", "1918"], answer: "1912" },
+                { question: "Who was the leader of Nazi Germany?", options: ["Adolf Hitler", "Joseph Stalin", "Winston Churchill", "Franklin D. Roosevelt"], answer: "Adolf Hitler" },
+                { question: "What was the name of the first human civilization?", options: ["Mesopotamia", "Egypt", "Indus Valley", "China"], answer: "Mesopotamia" },
+                { question: "What year did the American Civil War begin?", options: ["1861", "1850", "1870", "1880"], answer: "1861" },
+                { question: "Who was the first emperor of China?", options: ["Qin Shi Huang", "Kublai Khan", "Sun Yat-sen", "Mao Zedong"], answer: "Qin Shi Huang" }
+            ],
+            general: [
+                { question: "What is the capital of France?", options: ["Paris", "London", "Berlin", "Madrid"], answer: "Paris" },
+                { question: "What is the largest mammal?", options: ["Blue Whale", "Elephant", "Giraffe", "Shark"], answer: "Blue Whale" },
+                { question: "What is the smallest country in the world?", options: ["Vatican City", "Monaco", "San Marino", "Liechtenstein"], answer: "Vatican City" },
+                { question: "What is the national flower of Japan?", options: ["Cherry Blossom", "Rose", "Lotus", "Tulip"], answer: "Cherry Blossom" },
+                { question: "What is the most spoken language in the world?", options: ["English", "Mandarin", "Spanish", "Hindi"], answer: "Mandarin" },
+                { question: "What is the longest river in the world?", options: ["Nile", "Amazon", "Yangtze", "Mississippi"], answer: "Nile" },
+                { question: "What is the largest desert in the world?", options: ["Sahara", "Gobi", "Arctic", "Antarctic"], answer: "Antarctic" },
+                { question: "What is the fastest land animal?", options: ["Cheetah", "Lion", "Horse", "Leopard"], answer: "Cheetah" },
+                { question: "What is the currency of Japan?", options: ["Yen", "Won", "Dollar", "Euro"], answer: "Yen" },
+                { question: "What is the tallest mountain in the world?", options: ["Mount Everest", "K2", "Kangchenjunga", "Lhotse"], answer: "Mount Everest" },
+                { question: "What is the most populous country in the world?", options: ["China", "India", "USA", "Indonesia"], answer: "China" },
+                { question: "What is the chemical symbol for iron?", options: ["Fe", "Ir", "In", "I"], answer: "Fe" },
+                { question: "What is the hardest natural substance?", options: ["Diamond", "Gold", "Iron", "Quartz"], answer: "Diamond" },
+                { question: "What is the largest ocean in the world?", options: ["Pacific", "Atlantic", "Indian", "Arctic"], answer: "Pacific" },
+                { question: "What is the capital of Australia?", options: ["Canberra", "Sydney", "Melbourne", "Brisbane"], answer: "Canberra" }
+            ],
+            math: [
+                { question: "What is 5 + 3?", options: ["5", "8", "10", "15"], answer: "8" },
+                { question: "What is the square root of 16?", options: ["2", "4", "8", "16"], answer: "4" },
+                { question: "What is 12 x 12?", options: ["144", "121", "100", "169"], answer: "144" },
+                { question: "What is 100 divided by 4?", options: ["25", "20", "15", "10"], answer: "25" },
+                { question: "What is the value of pi (approximately)?", options: ["3.14", "2.71", "1.62", "4.13"], answer: "3.14" },
+                { question: "What is 7 squared?", options: ["49", "14", "21", "28"], answer: "49" },
+                { question: "What is 15% of 200?", options: ["30", "25", "20", "35"], answer: "30" },
+                { question: "What is the perimeter of a square with side length 5?", options: ["20", "25", "15", "10"], answer: "20" },
+                { question: "What is the area of a triangle with base 10 and height 5?", options: ["25", "50", "20", "15"], answer: "25" },
+                { question: "What is the cube root of 27?", options: ["3", "9", "6", "4"], answer: "3" },
+                { question: "What is 2 to the power of 5?", options: ["32", "25", "10", "20"], answer: "32" },
+                { question: "What is the sum of angles in a triangle?", options: ["180°", "360°", "90°", "270°"], answer: "180°" },
+                { question: "What is the formula for the area of a circle?", options: ["πr²", "2πr", "πd", "r²"], answer: "πr²" },
+                { question: "What is the factorial of 5?", options: ["120", "60", "24", "100"], answer: "120" },
+                { question: "What is the value of 0 factorial (0!)?", options: ["1", "0", "Undefined", "Infinity"], answer: "1" }
+            ],
+            sports: [
+                { question: "How many players are there in a soccer team?", options: ["9", "10", "11", "12"], answer: "11" },
+                { question: "Which country hosted the 2016 Summer Olympics?", options: ["China", "Brazil", "USA", "Japan"], answer: "Brazil" },
+                { question: "What is the national sport of Japan?", options: ["Sumo Wrestling", "Baseball", "Karate", "Judo"], answer: "Sumo Wrestling" },
+                { question: "Who has won the most Grand Slam titles in tennis?", options: ["Roger Federer", "Rafael Nadal", "Novak Djokovic", "Serena Williams"], answer: "Novak Djokovic" },
+                { question: "What is the length of a marathon?", options: ["42.195 km", "40 km", "50 km", "45 km"], answer: "42.195 km" },
+                { question: "Which country won the FIFA World Cup in 2018?", options: ["France", "Croatia", "Germany", "Brazil"], answer: "France" },
+                { question: "What is the highest score in a single frame of bowling?", options: ["30", "10", "20", "40"], answer: "30" },
+                { question: "What is the diameter of a basketball hoop in inches?", options: ["18", "20", "16", "22"], answer: "18" },
+                { question: "What is the maximum score in a single game of ten-pin bowling?", options: ["300", "200", "400", "250"], answer: "300" },
+                { question: "Which country is known as the birthplace of cricket?", options: ["England", "India", "Australia", "South Africa"], answer: "England" },
+                { question: "What is the term for three strikes in a row in bowling?", options: ["Turkey", "Hat-trick", "Triple", "Strike"], answer: "Turkey" },
+                { question: "What is the name of the trophy awarded in the NHL?", options: ["Stanley Cup", "World Cup", "Super Bowl", "Claret Jug"], answer: "Stanley Cup" },
+                { question: "Which sport is known as 'The Gentleman's Game'?", options: ["Cricket", "Golf", "Tennis", "Baseball"], answer: "Cricket" },
+                { question: "What is the term for scoring zero in tennis?", options: ["Love", "Zero", "Nil", "Duck"], answer: "Love" },
+                { question: "Which country has won the most Olympic gold medals?", options: ["USA", "China", "Russia", "Germany"], answer: "USA" }
+            ]
+        };
+
+        const resultsDetails = document.getElementById("resultsDetails");
+        const finalScore = document.getElementById("finalScore");
+
+        if (category && questions[category]) {
+            let correctAnswers = 0;
+            questions[category].forEach((q, index) => {
+                const userAnswer = userAnswers[`${category}-${index + 1}`];
+                const isCorrect = userAnswer === q.answer;
+                if (isCorrect) correctAnswers++;
+
+                const resultItem = document.createElement("p");
+                resultItem.className = isCorrect ? "correct" : "incorrect";
+                resultItem.textContent = `${index + 1}. ${q.question} - Your Answer: ${userAnswer || "No Answer"} - ${
+                    isCorrect ? "Correct" : `Wrong (Correct: ${q.answer})`
+                }`;
+                resultsDetails.appendChild(resultItem);
+            });
+
+            finalScore.textContent = `Your Score: ${correctAnswers} / ${questions[category].length}`;
+        } else {
+            resultsDetails.textContent = "Invalid Category";
+        }
+
+        // Clear user answers after showing results
+        localStorage.removeItem("userAnswers");
+    </script>
+</body>
+</html>

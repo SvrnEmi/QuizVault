@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Quizvault.png" type="image/x-icon">
+</head>
+<body>
+    <div class="main-page">
+        <nav class="menu-bar">
+            <ul>
+                <li><a href="homepage.html" id="homeLink">Home</a></li> <!--Homepage Button-->
+                <li><a href="profile.html" id="profileLink">Profile</a></li> <!-- Profile button -->
+                <li><a href="about.html" id="aboutLink">About</a></li> <!-- about button -->
+                <li><a href="index.html" id="logoutButton">Logout</a></li> <!-- log out -->
+            </ul>
+        </nav>
+        <div class="main-content">
+            <h1>Welcome to QuizVault!</h1>
+            <p>Click the button below to start your quiz journey!</p>
+            <button id="startButton" class="button">Start</button>
+        </div>
+        <div class="categories-list" id="categoriesList" style="display: none;">
+            <!-- Science Category -->
+            <div class="card" onclick="openCategory('Science', 'Science', 'Are you ready to test your knowledge of science?')">
+                <img src="science.png" alt="Science" class="card__image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                </svg>
+                <div class="card__content">
+                    <h3 class="card__title">Science</h3>
+                    <p class="card__description">Explore the wonders of science!</p>
+                </div>
+            </div>
+
+            <!-- History Category -->
+            <div class="card" onclick="openCategory('History', 'History', 'Dive into the past and learn history!')">
+                <img src="history.png" alt="History" class="card__image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                </svg>
+                <div class="card__content">
+                    <h3 class="card__title">History</h3>
+                    <p class="card__description">Dive into the past and learn history!</p>
+                </div>
+            </div>
+
+            <!-- General Knowledge Category -->
+            <div class="card" onclick="openCategory('General', 'General Knowledge', 'Test your knowledge on various topics!')">
+                <img src="general knowledge.jpg" alt="General Knowledge" class="card__image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                </svg>
+                <div class="card__content">
+                    <h3 class="card__title">General Knowledge</h3>
+                    <p class="card__description">Test your knowledge on various topics!</p>
+                </div>
+            </div>
+
+            <!-- Math Category -->
+            <div class="card" onclick="openCategory('Math', 'Math', 'Challenge yourself with math problems!')">
+                <img src="math.jpg" alt="Math" class="card__image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                </svg>
+                <div class="card__content">
+                    <h3 class="card__title">Math</h3>
+                    <p class="card__description">Challenge yourself with math problems!</p>
+                </div>
+            </div>
+
+            <!-- Sports & Games Category -->
+            <div class="card" onclick="openCategory('Sports', 'Sports & Games', 'Test your knowledge of sports and games!')">
+                <img src="sports.png" alt="Sports & Games" class="card__image">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path>
+                </svg>
+                <div class="card__content">
+                    <h3 class="card__title">Sports & Games</h3>
+                    <p class="card__description">Test your knowledge of sports and games!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+    // Log out Script
+    document.getElementById("logoutButton").addEventListener("click", () => {
+        window.location.href = "index.html"; // when clicked, user redirects to log in page
+    });
+
+    // Start button
+    document.getElementById("startButton").addEventListener("click", () => {
+        document.getElementById("categoriesList").style.display = "flex"; // Show categories
+        document.querySelector(".main-content").style.display = "none"; // Hide the main content
+    });
+
+    // Function to handle category selection
+    function openCategory(categoryName, categoryTitle, categoryDescription) {
+        // Get the main container
+        const categoriesList = document.getElementById("categoriesList");
+        const mainPage = document.querySelector(".main-page");
+
+        // Hide the categories list
+        categoriesList.style.display = "none";
+
+        // Create a new container for the selected category
+        const categoryContainer = document.createElement("div");
+        categoryContainer.className = `${categoryName.toLowerCase()}-container`;
+        categoryContainer.innerHTML = `
+            <h1>Welcome to the ${categoryTitle} Quiz!</h1>
+            <p>${categoryDescription}</p>
+            <button class="button" id="start${categoryName}Quiz">Start</button>
+        `;
+
+        // Append the category container to the main page
+        mainPage.appendChild(categoryContainer);
+
+        // Add functionality to the Start button
+        document.getElementById(`start${categoryName}Quiz`).addEventListener("click", () => {
+            // Redirect to quiz.html with the category as a query parameter
+            window.location.href = `quiz.html?category=${categoryName.toLowerCase()}`;
+        });
+    }
+
+    document.getElementById("homeLink").addEventListener("click", () => {
+        window.location.href = "homepage.html"; // Redirect to homepage
+    });
+
+    document.getElementById("profileLink").addEventListener("click", () => {
+        window.location.href = "profile.html"; // Redirect to profile page
+    });
+
+    document.getElementById("settingsLink").addEventListener("click", () => {
+        window.location.href = "settings.html"; // Redirect to settings page
+    });
+
+    document.getElementById("aboutLink").addEventListener("click", () => {
+        window.location.href = "about.html"; // Redirect to about page
+    });
+</script>
+</body>
+</html>
